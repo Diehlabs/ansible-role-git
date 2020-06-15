@@ -1,2 +1,2 @@
 ---
-# defaults file for git
+git_ssl_verify: true

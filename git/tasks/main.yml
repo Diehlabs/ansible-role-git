@@ -21,7 +21,7 @@
   git_config:
     name: http.sslVerify
     scope: global
-    value: 'false'
+    value: "{{ git_ssl_verify }}"
 
 - name: Do git config (user.email)
   git_config:
