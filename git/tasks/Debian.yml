@@ -3,8 +3,8 @@
   apt:
     pkg: "git"
     state: present
-
-- name: Installing apt Packages (Git Cred Manager)
-  apt:
-    pkg: "git-credential-manager"
-    state: present
+# only available in rpm format as of 6/15/20
+#- name: Installing apt Packages (Git Cred Manager)
+#  apt:
+#    pkg: "git-credential-manager"
+#    state: present
