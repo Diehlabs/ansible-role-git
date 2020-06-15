@@ -10,9 +10,3 @@
     path: ~/.bash_profile
     line: 'GIT_PS1_SHOWDIRTYSTATE=true'
     create: yes
-
-- name: Configure bash_completion
-  lineinfile:
-    path: ~/.bash_profile
-    line: source /usr/local/etc/profile.d/bash_completion.sh
-    create: yes
