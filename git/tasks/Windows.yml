@@ -4,6 +4,11 @@
     name: "git"
     state: present
 
+- name: Install Chocolatey packages (Git Cred Manager)
+  win_chocolatey:
+    name: "git-credential-manager-for-windows"
+    state: present
+
 - name: Install Chocolatey packages (poshgit)
   win_chocolatey:
     name: "poshgit"

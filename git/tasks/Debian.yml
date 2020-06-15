@@ -1,0 +1,10 @@
+---
+- name: Installing apt Packages (Git)
+  apt:
+    pkg: "git"
+    state: present
+
+- name: Installing apt Packages (Git Cred Manager)
+  apt:
+    pkg: "git-credential-manager"
+    state: present
