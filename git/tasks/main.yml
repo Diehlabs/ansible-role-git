@@ -1,2 +1,36 @@
 ---
-# tasks file for git
+- include: Debian.yml
+  when: ansible_os_family == 'Debian'
+
+- include: Darwin.yml
+  when: ansible_os_family == 'Darwin'
+
+- include: bash.yml
+  when: ansible_os_family != 'Windows'
+
+- include: Windows.yml
+  when: ansible_os_family == 'Windows'
+
+- name: Configure .gitexcludes
+  lineinfile:
+    path: ~/.gitexcludes
+    line: .DS_Store
+    create: yes
+
+- name: Do git config (http.sslVerify)
+  git_config:
+    name: http.sslVerify
+    scope: global
+    value: 'false'
+
+- name: Do git config (user.email)
+  git_config:
+    name: user.email
+    scope: global
+    value: "{{ user_email }}"
+
+- name: Do git config (user.name)
+  git_config:
+    name: user.name
+    scope: global
+    value: "\"{{ user_name }}\""

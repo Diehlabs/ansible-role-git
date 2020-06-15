@@ -1,0 +1,10 @@
+---
+- name: Installing Homebrew Cask Packages (Git)
+  homebrew_cask:
+    name: "adoptopenjdk"
+    state: present
+
+- name: Install Homebrew Packages (Git)
+  homebrew:
+    name: [ "git", "bash-completion", "git-credential-manager" ]
+    state: "present"
