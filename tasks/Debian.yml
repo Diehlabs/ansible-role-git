@@ -1,6 +1,6 @@
 ---
 - name: Installing apt Packages (Git)
-  apt:
+  ansible.builtin.apt:
     pkg: "git"
     state: present
 # only available in rpm format as of 6/15/20
