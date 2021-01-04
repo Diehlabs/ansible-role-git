@@ -1,0 +1,18 @@
+---
+- name: Do git config (http.sslVerify)
+  git_config:
+    name: http.sslVerify
+    scope: "{{ git_config_scope }}"
+    value: "{{ git_ssl_verify }}"
+
+- name: Do git config
+  git_config:
+    name: git_user_email
+    scope: "{{ git_config_scope }}"
+    value: "{{ git_user_email }}"
+
+- name: Do git config
+  git_config:
+    name: git_user_email
+    scope: "{{ git_config_scope }}"
+    value: "\"{{ git_user_full_name }}\""

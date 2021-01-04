@@ -1,10 +1,13 @@
 ---
 - name: Installing Homebrew Cask Packages (Git)
   homebrew_cask:
-    name: "adoptopenjdk"
     state: present
+    name: adoptopenjdk
 
 - name: Install Homebrew Packages (Git)
   homebrew:
-    name: [ "git", "bash-completion", "git-credential-manager" ]
-    state: "present"
+    state: present
+    name: 
+    - "git"
+    - "bash-completion"
+    - "git-credential-manager"
