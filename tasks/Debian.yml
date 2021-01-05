@@ -3,7 +3,7 @@
   ansible.builtin.apt:
     pkg: 
     - git
-    - git-credential-store
+    - bash-completion
     state: present
 # only available in rpm format as of 6/15/20
 #- name: Installing apt Packages (Git Cred Manager)
@@ -11,17 +11,17 @@
 #    pkg: "git-credential-manager"
 #    state: present
 
-- name: Ensure  ~/.git-credentials exists
-  ansible.builtin.file:
-    path: "{{ git_user_home_path | default(git_user_home_path_default, true) }}/.git-credentials"
-    state: touch
-    mode: u=rw
-    owner: git_user_name
-    access_time: preserve
-    modification_time: preserve
+# - name: Ensure  ~/.git-credentials exists
+#   ansible.builtin.file:
+#     path: "{{ git_user_home_path | default(git_user_home_path_default, true) }}/.git-credentials"
+#     state: touch
+#     mode: u=rw
+#     owner: git_user_name
+#     access_time: preserve
+#     modification_time: preserve
 
-- name: Git config - git-credential-store (Linux only)
-  community.general.git_config:
-    name: credential.helper
-    scope: "{{ git_config_scope }}"
-    value: store
+# - name: Git config - git-credential-store (Linux only)
+#   community.general.git_config:
+#     name: credential.helper
+#     scope: "{{ git_config_scope }}"
+#     value: store
