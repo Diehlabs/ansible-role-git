@@ -13,7 +13,7 @@ Role Variables
 
 Defaults:
 | Variable Name       | Info     |
-| :------------- | :----------: |
+| :------------- | :------------- |
 | git_user_email | cultclassik@gmail.com |
 | git_user_name | chris |
 | git_user_full_name | Chris Diehl |
@@ -22,11 +22,12 @@ Defaults:
 | git_config_scope | system |
 
 Vars:
-git_user_home_path_default: "{{ git_user_home_path_by_os[ansible_system] }}"
-git_user_home_path_by_os:
-  Darwin: /Users/{{ git_user_name }}
-  Linux: /home/{{ git_user_name }}
-  Windows: \Users\{{ git_user_name }}
+| Variable Name       | Info     |
+| :------------- | :------------- |
+| git_user_home_path_default: "{{ git_user_home_path_by_os[ansible_system] }}"
+| git_user_home_path_by_os.Darwin: | /Users/{{ git_user_name }} |
+| git_user_home_path_by_os.Linux: | /home/{{ git_user_name }} |
+| git_user_home_path_by_os.Windows: | \Users\{{ git_user_name }} |
 
 Dependencies
 ------------
