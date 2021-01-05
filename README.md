@@ -32,7 +32,7 @@ Vars:
 Dependencies
 ------------
 
-community.general
+Collection: community.general
 
 Example Playbook
 ----------------
