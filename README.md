@@ -1,7 +1,7 @@
-Role Name
+ansible-role-git
 =========
 
-A brief description of the role goes here.
+Installs and configures Git and related items. Windows, Linux, OSX supported.
 
 Requirements
 ------------
@@ -11,12 +11,25 @@ Any pre-requisites that may not be covered by Ansible itself or the role should 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+Defaults:
+git_user_email: cultclassik@gmail.com
+git_user_name: chris
+git_user_full_name: Chris Diehl
+git_user_home_path: # optional to specify explicit path, otherwise path is derived based on OS from var "git_user_home_path_by_os".
+git_ssl_verify: "true"
+git_config_scope: system
+
+Vars:
+git_user_home_path_default: "{{ git_user_home_path_by_os[ansible_system] }}"
+git_user_home_path_by_os:
+  Darwin: /Users/{{ git_user_name }}
+  Linux: /home/{{ git_user_name }}
+  Windows: \Users\{{ git_user_name }}
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+community.general
 
 Example Playbook
 ----------------
@@ -25,7 +38,7 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: servers
       roles:
-         - { role: username.rolename, x: 42 }
+         - { role: git, git_user_email: mine@email.org }
 
 License
 -------
