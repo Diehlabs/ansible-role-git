@@ -24,7 +24,7 @@ Defaults:
 Vars:
 | Variable Name       | Info     |
 | :------------- | :------------- |
-| git_user_home_path_default: "{{ git_user_home_path_by_os[ansible_system] }}"
+| git_user_home_path_default: | "{{ git_user_home_path_by_os[ansible_system] }}"
 | git_user_home_path_by_os.Darwin: | /Users/{{ git_user_name }} |
 | git_user_home_path_by_os.Linux: | /home/{{ git_user_name }} |
 | git_user_home_path_by_os.Windows: | \Users\{{ git_user_name }} |
