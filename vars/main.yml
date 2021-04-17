@@ -3,6 +3,6 @@
 
 git_user_home_path_default: "{{ git_user_home_path_by_os[ansible_system] }}"
 git_user_home_path_by_os:
-  Darwin: "/Users/{{ git_user_name }}/.gitconfig"
-  Linux: "/home/{{ git_user_name }}/.gitconfig"
+  Darwin: "/Users/{{ git_user_name }}"
+  Linux: "/home/{{ git_user_name }}"
   Windows: "c:/Users/{{ git_user_name }}"
