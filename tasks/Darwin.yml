@@ -8,6 +8,6 @@
   ansible.builtin.homebrew:
     state: present
     name: 
-    - "git"
-    - "bash-completion"
-    - "git-credential-manager"
+    - git
+    - bash-completion
+    - git-credential-manager
