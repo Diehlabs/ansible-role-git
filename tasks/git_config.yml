@@ -1,18 +1,37 @@
 ---
-- name: Do git config (http.sslVerify)
-  community.general.git_config:
-    name: http.sslVerify
-    scope: "{{ git_config_scope }}"
-    value: "{{ git_ssl_verify }}"
+# - name: Do git config (http.sslVerify)
+#   community.general.git_config:
+#     name: http.sslVerify
+#     scope: "{{ git_config_scope }}"
+#     value: "{{ git_ssl_verify }}"
 
-- name: Do git config - email
-  community.general.git_config:
-    name: user.email
-    scope: "{{ git_config_scope }}"
-    value: "{{ git_user_email }}"
+# - name: Do git config - email
+#   community.general.git_config:
+#     name: user.email
+#     scope: "{{ git_config_scope }}"
+#     value: "{{ git_user_email }}"
 
-- name: Do git config - name
-  community.general.git_config:
-    name: user.name
-    scope: "{{ git_config_scope }}"
-    value: "\"{{ git_user_full_name }}\""
+# - name: Do git config - name
+#   community.general.git_config:
+#     name: user.name
+#     scope: "{{ git_config_scope }}"
+#     value: "\"{{ git_user_full_name }}\""
+
+# Using lineinfile instead
+- name: Git config (name)
+  lineinfile:
+    path: /etc/default/grub
+    regexp: '^name = .*$'
+    line: "name = {{ git_user_full_name }}"
+
+- name: Git config (email)
+  lineinfile:
+    path: /etc/default/grub
+    regexp: '^email = .*$'
+    line: "email = {{ git_user_email }}"
+
+- name: Git config (sslVerify)
+  lineinfile:
+    path: /etc/default/grub
+    regexp: '^sslVerify = .*$'
+    line: "sslVerify = {{ git_ssl_verify }}"
