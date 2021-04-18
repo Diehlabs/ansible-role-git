@@ -20,18 +20,18 @@
 # Using lineinfile instead
 - name: Git config (name)
   lineinfile:
-    path: /etc/default/grub
+    path: "{{ git_user_home_path | default(git_user_home_path_default, true) }}/.gitconfig"
     regexp: '^name = .*$'
     line: "name = {{ git_user_full_name }}"
 
 - name: Git config (email)
   lineinfile:
-    path: /etc/default/grub
+    path: "{{ git_user_home_path | default(git_user_home_path_default, true) }}/.gitconfig"
     regexp: '^email = .*$'
     line: "email = {{ git_user_email }}"
 
 - name: Git config (sslVerify)
   lineinfile:
-    path: /etc/default/grub
+    path: "{{ git_user_home_path | default(git_user_home_path_default, true) }}/.gitconfig"
     regexp: '^sslVerify = .*$'
     line: "sslVerify = {{ git_ssl_verify }}"
