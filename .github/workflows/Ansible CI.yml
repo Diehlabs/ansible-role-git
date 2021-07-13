@@ -1,0 +1,19 @@
+name: Ansible CI
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Lint Ansible Role
+      uses: ansible/ansible-lint-action@master
+      with:
+        targets:
+          tests/test.yml
+    - name: Install Ansible role
+      uses: saubermacherag/ansible-playbook-docker-action@v1.4
+      with:
+        playbookName: tests/test.yml
+        inventoryFile: tests/inventory
+        rolesPath: .ansible/playbooks/roles
+        verbosity: "vv"
