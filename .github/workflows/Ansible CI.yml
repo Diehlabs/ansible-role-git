@@ -11,7 +11,7 @@ jobs:
         targets:
           tests/test.yml
     - name: Copy role
-      run: mkdir -p ${ROLES_DIR} && cp -R /* ${ROLES_DIR}
+      run: mkdir -p ${ROLES_DIR} && cp -R "${RUNNER_WORSPACE}/*" ${ROLES_DIR}
       env:
         ROLES_DIR: .ansible/playbooks/roles
     - name: Install Ansible role
