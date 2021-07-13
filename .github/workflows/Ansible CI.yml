@@ -17,3 +17,5 @@ jobs:
         inventoryFile: tests/inventory
         rolesPath: .ansible/playbooks/roles
         verbosity: "vv"
+      env:
+        ANSIBLE_PYTHON_INTERPRETER: /usr/bin/python
