@@ -11,7 +11,14 @@ jobs:
         targets:
           tests/test.yml
     - name: Copy role
-      run: ls -la ./ && mkdir -p ${ROLES_DIR} && cp -Rv ./* ${ROLES_DIR}
+      run: |
+        ls -la ./
+        mkdir -p ${ROLES_DIR}
+        cp -Rv ./* ${ROLES_DIR}
+        echo "================="
+        ls -la ${ROLES_DIR}
+        echo "================="
+        ls -la ${ROLES_DIR}/git
       env:
         ROLES_DIR: .ansible/playbooks/roles/git
     - name: Install Ansible role
