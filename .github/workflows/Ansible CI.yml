@@ -1,7 +1,7 @@
 name: Ansible CI
 on: [push, pull_request]
 jobs:
-  test:
+  lint:
     runs-on: ubuntu-20.04
     steps:
     - name: checkout
@@ -14,6 +14,14 @@ jobs:
       with:
         targets:
           tests/test.yml
+
+  test:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+      with:
+        path: "${{ github.repository }}"
 
     - name: molecule
       uses: robertdebock/molecule-action@2.6.17
