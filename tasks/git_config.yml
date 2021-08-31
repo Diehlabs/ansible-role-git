@@ -17,6 +17,12 @@
 #     scope: "{{ git_config_scope }}"
 #     value: "\"{{ git_user_full_name }}\""
 
+# - name: Git config - git-credential-store
+#   community.general.git_config:
+#     name: credential.helper
+#     scope: "{{ git_config_scope }}"
+#     value: store
+
 # Using lineinfile instead
 - name: Git config (name)
   ansible.builtin.lineinfile:
@@ -35,3 +41,4 @@
     path: "{{ git_user_home_path | default(git_user_home_path_default, true) }}/.gitconfig"
     regexp: '^sslVerify = .*$'
     line: "sslVerify = {{ git_ssl_verify }}"
+
