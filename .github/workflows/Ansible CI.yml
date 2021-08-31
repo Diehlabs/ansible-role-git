@@ -13,7 +13,7 @@ jobs:
     - name: Copy role
       run: |
         ls -la ./
-        mkdir -p ${ROLES_DIR}/git
+        mkdir ${ROLES_DIR}/git
         cp -Rv ./* ${ROLES_DIR}/git
         echo "================="
         ls -la ${ROLES_DIR}
