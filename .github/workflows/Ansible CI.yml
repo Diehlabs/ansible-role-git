@@ -18,9 +18,9 @@ jobs:
         echo "================="
         ls -la ${ROLES_DIR}
         echo "================="
-        ls -la ${ROLES_DIR}/git
+        ls -la ${ROLES_DIR}git
       env:
-        ROLES_DIR: .ansible/playbooks/roles
+        ROLES_DIR: /github/workspace/tests/roles
     - name: Install Ansible role
       uses: saubermacherag/ansible-playbook-docker-action@v1.4
       with:
