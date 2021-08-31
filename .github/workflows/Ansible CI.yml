@@ -13,14 +13,14 @@ jobs:
     - name: Copy role
       run: |
         ls -la ./
-        mkdir -p ${ROLES_DIR}
-        cp -Rv ./* ${ROLES_DIR}
+        mkdir -p ${ROLES_DIR}/git
+        cp -Rv ./* ${ROLES_DIR}/git
         echo "================="
         ls -la ${ROLES_DIR}
         echo "================="
         ls -la ${ROLES_DIR}/git
       env:
-        ROLES_DIR: .ansible/playbooks/roles/git
+        ROLES_DIR: .ansible/playbooks/roles
     - name: Install Ansible role
       uses: saubermacherag/ansible-playbook-docker-action@v1.4
       with:
