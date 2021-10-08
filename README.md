@@ -1,4 +1,5 @@
 ansible-role-git
+[![Ansible Lint](https://github.com/CultClassik/ansible-role-git/actions/workflows/Ansible%20Lint.yml/badge.svg)](https://github.com/CultClassik/ansible-role-git/actions/workflows/Ansible%20Lint.yml)
 =========
 
 Installs and configures Git and related items. Windows, Linux, OSX supported.

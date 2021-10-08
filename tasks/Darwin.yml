@@ -1,9 +1,4 @@
 ---
-# - name: Installing Homebrew Cask Packages (Git)
-#   ansible.builtin.homebrew_cask:
-#     state: present
-#     name: adoptopenjdk
-
 - name: Install Homebrew Packages (Git)
   ansible.builtin.homebrew:
     state: present
