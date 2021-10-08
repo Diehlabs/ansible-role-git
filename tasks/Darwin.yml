@@ -10,4 +10,7 @@
     name: 
     - git
     - bash-completion
+    - pre-commit
+    - gawk
+    - coreutils
     #- git-credential-manager
