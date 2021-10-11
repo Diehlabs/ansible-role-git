@@ -9,7 +9,6 @@
     line: 'source /usr/local/etc/profile.d/bash_completion.sh'
     create: true
     owner: "{{ git_user_id }}"
-    group: "{{ git_user_group }}"
     mode: "u=rwx,g=r"
 
 - name: Add show dirty state to bash_profile
@@ -18,7 +17,6 @@
     line: 'GIT_PS1_SHOWDIRTYSTATE=true'
     create: true
     owner: "{{ git_user_id }}"
-    group: "{{ git_user_group }}"
     mode: "u=rwx,g=r"
 
 - name: Configure .gitexcludes
@@ -27,5 +25,4 @@
     line: .DS_Store
     create: true
     owner: "{{ git_user_id }}"
-    group: "{{ git_user_group }}"
     mode: "u=rwx,g=r"
