@@ -5,6 +5,7 @@
     state: touch
     mode: "u=rw,g=r,o=r"
     owner: "{{ git_user_id }}"
+    group: "{{ git_user_group }}"
 
 - name: Do git config (http.sslVerify)
   community.general.git_config:
