@@ -1,18 +1,31 @@
 ---
+- name: Install pip packages
+  pip:
+    name: pre-commit
+
 - name: Add bash-completion to bash_profile
   ansible.builtin.lineinfile:
     path: "{{ git_user_home_path | default(git_user_home_path_default, true) }}/.bash_profile"
     line: 'source /usr/local/etc/profile.d/bash_completion.sh'
-    create: yes
+    create: true
+    owner: "{{ git_user_name }}"
+    group: "{{ git_user_name }}"
+    mode: "u=rwx,g=rwx"
 
 - name: Add show dirty state to bash_profile
   ansible.builtin.lineinfile:
     path: "{{ git_user_home_path | default(git_user_home_path_default, true) }}/.bash_profile"
     line: 'GIT_PS1_SHOWDIRTYSTATE=true'
-    create: yes
+    create: true
+    owner: "{{ git_user_name }}"
+    group: "{{ git_user_name }}"
+    mode: "u=rwx,g=rwx"
 
 - name: Configure .gitexcludes
   ansible.builtin.lineinfile:
     path: "{{ git_user_home_path | default(git_user_home_path_default, true) }}/.gitexcludes"
     line: .DS_Store
-    create: yes
+    create: true
+    owner: "{{ git_user_name }}"
+    group: "{{ git_user_name }}"
+    mode: "u=rwx,g=rwx"
