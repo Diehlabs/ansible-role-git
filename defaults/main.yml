@@ -1,8 +1,8 @@
 ---
 git_user_email: cultclassik@gmail.com
-git_user_name: chris
+git_user_id: chris
 git_user_full_name: Chris Diehl
-# optional to specify explicit path
-git_user_home_path:
 git_ssl_verify: 'true'
 git_config_scope: system
+# optional to specify explicit path
+git_user_home_path:
