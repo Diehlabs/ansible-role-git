@@ -5,10 +5,10 @@
 - include: Darwin.yml
   when: ansible_os_family == 'Darwin'
 
-- include: Windows.yml
-  when: ansible_os_family == 'Windows'
-
 - include: nix.yml
   when: ansible_os_family != 'Windows'
+
+- include: Windows.yml
+  when: ansible_os_family == 'Windows'
 
 - include: git_config.yml

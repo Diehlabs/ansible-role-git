@@ -1,4 +1,13 @@
 ---
+- name: Ensure .gitconfig exists
+  ansible.builtin.file:
+    path: "{{ git_user_home_path | default(git_user_home_path_default, true) }}/.gitconfig"
+    state: touch
+    mode: "u=rw,g=r,o=r"
+    owner: "{{ git_user_name }}"
+    group: "{{ git_user_name }}"
+
+
 - name: Do git config (http.sslVerify)
   community.general.git_config:
     name: http.sslVerify
