@@ -3,6 +3,5 @@ git_user_email: cultclassik@gmail.com
 git_user_id: chris
 git_user_full_name: Chris Diehl
 git_ssl_verify: 'true'
-git_config_scope: user
 # optional to specify explicit path
 git_user_home_path:

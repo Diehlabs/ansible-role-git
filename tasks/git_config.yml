@@ -10,24 +10,28 @@
   community.general.git_config:
     name: http.sslVerify
     scope: "{{ git_config_scope }}"
+    file: "{{ git_user_home_path | default(git_user_home_path_default, true) }}/.gitconfig"
     value: "{{ git_ssl_verify }}"
 
 - name: Do git config - email
   community.general.git_config:
     name: user.email
     scope: "{{ git_config_scope }}"
+    file: "{{ git_user_home_path | default(git_user_home_path_default, true) }}/.gitconfig"
     value: "{{ git_user_email }}"
 
 - name: Do git config - name
   community.general.git_config:
     name: user.name
     scope: "{{ git_config_scope }}"
+    file: "{{ git_user_home_path | default(git_user_home_path_default, true) }}/.gitconfig"
     value: "\"{{ git_user_full_name }}\""
 
 - name: Git config - git-credential-store
   community.general.git_config:
     name: credential.helper
     scope: "{{ git_config_scope }}"
+    file: "{{ git_user_home_path | default(git_user_home_path_default, true) }}/.gitconfig"
     value: store
 
 # Using lineinfile instead
