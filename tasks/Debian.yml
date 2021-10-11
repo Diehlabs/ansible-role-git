@@ -4,6 +4,6 @@
     pkg:
       - git
       - bash-completion
-      - pre-commit
       - coreutils
     state: present
+    update_cache: yes
