@@ -2,9 +2,9 @@
 - name: Install Homebrew Packages (Git)
   ansible.builtin.homebrew:
     state: present
-    name: 
-    - git
-    - bash-completion
-    - pre-commit
-    - gawk
-    - coreutils
+    name:
+      - git
+      - bash-completion
+      - pre-commit
+      - gawk
+      - coreutils

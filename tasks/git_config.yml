@@ -41,4 +41,3 @@
     path: "{{ git_user_home_path | default(git_user_home_path_default, true) }}/.gitconfig"
     regexp: '^sslVerify = .*$'
     line: "sslVerify = {{ git_ssl_verify }}"
-

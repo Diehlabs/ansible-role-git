@@ -2,16 +2,21 @@ galaxy_info:
   author: Chris Diehl
   description: Configures Git SCM
   company: Diehlabs
+  role_name: git
+  namespace: diehlabs
 
-  license: license (GPLv2, CC-BY, etc)
+  license: MIT
 
-  min_ansible_version: 2.9
+  min_ansible_version: '2.9'
 
   platforms:
-  - name: Darwin
-    versions:
-    - all
-
+    - name: Ubuntu
+      versions:
+        - xenial
+        - lucid
+    - name: os10
+      versions:
+        - all
 
   galaxy_tags: []
     # List tags for your role here, one per line. A tag is a keyword that describes
@@ -26,4 +31,4 @@ dependencies: []
   # if you add dependencies to this list.
 
 collections:
-- community.general
+  - community.general
