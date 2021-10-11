@@ -1,8 +1,4 @@
 ---
-- name: Install pip packages
-  pip:
-    name: pre-commit
-
 - name: Add bash-completion to bash_profile
   ansible.builtin.lineinfile:
     path: "{{ git_user_home_path | default(git_user_home_path_default, true) }}/.bash_profile"
