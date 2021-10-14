@@ -5,4 +5,4 @@
     create: true
     mode: u=rw,g=r,o=r
     owner: "{{ git_user_id }}"
-    group: "{{ git_user_id }}"
+    group: "{{ git_user_group }}"
