@@ -12,3 +12,9 @@
   when: ansible_os_family == 'Windows'
 
 - include: git_config.yml
+
+- name: Install pip packages
+  pip:
+    name: pre-commit
+    executable: pip3
+    extra_args: --user

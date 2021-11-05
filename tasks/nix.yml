@@ -1,23 +1,26 @@
 ---
-- name: Install pip packages
-  pip:
-    name: pre-commit
+- name: Ensure .bash_profile exists
+  ansible.builtin.file:
+    path: "{{ git_user_home_path | default(git_user_home_path_default, true) }}/.bash_profile"
+    state: touch
+    mode: "u=rw,g=r,o=r"
+    owner: "{{ git_user_id }}"
 
 - name: Add bash-completion to bash_profile
   ansible.builtin.lineinfile:
     path: "{{ git_user_home_path | default(git_user_home_path_default, true) }}/.bash_profile"
     line: 'source /usr/local/etc/profile.d/bash_completion.sh'
-    create: true
-    owner: "{{ git_user_id }}"
-    mode: "u=rwx,g=r"
+    # create: true
+    # owner: "{{ git_user_id }}"
+    # mode: "u=rwx,g=r,o=r"
 
 - name: Add show dirty state to bash_profile
   ansible.builtin.lineinfile:
     path: "{{ git_user_home_path | default(git_user_home_path_default, true) }}/.bash_profile"
     line: 'GIT_PS1_SHOWDIRTYSTATE=true'
-    create: true
-    owner: "{{ git_user_id }}"
-    mode: "u=rwx,g=r"
+    # create: true
+    # owner: "{{ git_user_id }}"
+    # mode: "u=rwx,g=r,o=r"
 
 - name: Configure .gitexcludes
   ansible.builtin.lineinfile:
@@ -25,4 +28,12 @@
     line: .DS_Store
     create: true
     owner: "{{ git_user_id }}"
-    mode: "u=rwx,g=r"
+    mode: "u=rw,g=r,o=r"
+
+- name: Check if zsh is present
+  stat:
+    path: /bin/zsh
+  register: zsh_is_installed
+
+- include: zsh.yml
+  when: zsh_is_installed.stat.exists

@@ -1,0 +1,8 @@
+- name: Add Git completion for zsh
+  ansible.builtin.lineinfile:
+    path: "{{ git_user_home_path | default(git_user_home_path_default, true) }}/.zshrc.local"
+    line: 'autoload -Uz compinit && compinit'
+    create: true
+    mode: u=rw,g=r,o=r
+    owner: "{{ git_user_id }}"
+    group: "{{ git_user_group }}"
