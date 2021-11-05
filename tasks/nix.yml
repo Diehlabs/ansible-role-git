@@ -26,9 +26,9 @@
   ansible.builtin.lineinfile:
     path: "{{ git_user_home_path | default(git_user_home_path_default, true) }}/.gitexcludes"
     line: .DS_Store
-    # create: true
-    # owner: "{{ git_user_id }}"
-    # mode: "u=rwx,g=r,o=r"
+    create: true
+    owner: "{{ git_user_id }}"
+    mode: "u=rwx,g=r,o=r"
 
 - name: Check if zsh is present
   stat:
