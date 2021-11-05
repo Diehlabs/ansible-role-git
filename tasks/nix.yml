@@ -28,7 +28,7 @@
     line: .DS_Store
     create: true
     owner: "{{ git_user_id }}"
-    mode: "u=rwx,g=r,o=r"
+    mode: "u=rw,g=r,o=r"
 
 - name: Check if zsh is present
   stat:
