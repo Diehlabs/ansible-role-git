@@ -1,17 +1,17 @@
 ---
-- include: Debian.yml
+- include_tasks: Debian.yml
   when: ansible_os_family == 'Debian'
 
-- include: Darwin.yml
+- include_tasks: Darwin.yml
   when: ansible_os_family == 'Darwin'
 
-- include: nix.yml
+- include_tasks: nix.yml
   when: ansible_os_family != 'Windows'
 
-- include: Windows.yml
+- include_tasks: Windows.yml
   when: ansible_os_family == 'Windows'
 
-- include: git_config.yml
+- include_tasks: git_config.yml
 
 - name: Install pip packages
   pip:
