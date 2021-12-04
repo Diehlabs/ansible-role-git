@@ -1,8 +1,6 @@
 ---
-git_user_email: cultclassik@gmail.com
-git_user_id: chris
-git_user_group: chris
-git_user_full_name: Chris Diehl
+git_user_email: "{{ user_email }}"
+git_user_id: "{{ user_id }}"
+git_user_group: "{{ git_user_gid_by_os[ansible_system] }}"
+git_user_full_name: "{{ user_name }}"
 git_ssl_verify: 'true'
-# optional to specify explicit path
-git_user_home_path:

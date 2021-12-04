@@ -1,7 +1,7 @@
 ---
 - name: Ensure .gitconfig exists
   ansible.builtin.file:
-    path: "{{ git_user_home_path | default(git_user_home_path_default, true) }}/.gitconfig"
+    path: "~{{ git_user_id }}/.gitconfig"
     state: touch
     mode: "u=rw,g=r,o=r"
     owner: "{{ git_user_id }}"
@@ -10,45 +10,45 @@
   community.general.git_config:
     name: http.sslVerify
     scope: "{{ git_config_scope }}"
-    file: "{{ git_user_home_path | default(git_user_home_path_default, true) }}/.gitconfig"
+    file: "~{{ git_user_id }}/.gitconfig"
     value: "{{ git_ssl_verify }}"
 
 - name: Do git config - email
   community.general.git_config:
     name: user.email
     scope: "{{ git_config_scope }}"
-    file: "{{ git_user_home_path | default(git_user_home_path_default, true) }}/.gitconfig"
+    file: "~{{ git_user_id }}/.gitconfig"
     value: "{{ git_user_email }}"
 
 - name: Do git config - name
   community.general.git_config:
     name: user.name
     scope: "{{ git_config_scope }}"
-    file: "{{ git_user_home_path | default(git_user_home_path_default, true) }}/.gitconfig"
+    file: "~{{ git_user_id }}/.gitconfig"
     value: "\"{{ git_user_full_name }}\""
 
 - name: Git config - git-credential-store
   community.general.git_config:
     name: credential.helper
     scope: "{{ git_config_scope }}"
-    file: "{{ git_user_home_path | default(git_user_home_path_default, true) }}/.gitconfig"
+    file: "~{{ git_user_id }}/.gitconfig"
     value: store
 
 # Using lineinfile instead
 # - name: Git config (name)
 #   ansible.builtin.lineinfile:
-#     path: "{{ git_user_home_path | default(git_user_home_path_default, true) }}/.gitconfig"
+#     path: "~{{ git_user_id }}/.gitconfig"
 #     regexp: '^name = .*$'
 #     line: "name = {{ git_user_full_name }}"
 
 # - name: Git config (email)
 #   ansible.builtin.lineinfile:
-#     path: "{{ git_user_home_path | default(git_user_home_path_default, true) }}/.gitconfig"
+#     path: "~{{ git_user_id }}/.gitconfig"
 #     regexp: '^email = .*$'
 #     line: "email = {{ git_user_email }}"
 
 # - name: Git config (sslVerify)
 #   ansible.builtin.lineinfile:
-#     path: "{{ git_user_home_path | default(git_user_home_path_default, true) }}/.gitconfig"
+#     path: "~{{ git_user_id }}/.gitconfig"
 #     regexp: '^sslVerify = .*$'
 #     line: "sslVerify = {{ git_ssl_verify }}"

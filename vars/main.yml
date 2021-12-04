@@ -2,8 +2,8 @@
 # vars file for git
 
 git_config_scope: file
-git_user_home_path_default: "{{ git_user_home_path_by_os[ansible_system] }}"
-git_user_home_path_by_os:
-  Darwin: "/Users/{{ git_user_id }}"
-  Linux: "/home/{{ git_user_id }}"
-  Windows: "c:/Users/{{ git_user_id }}"
+
+git_user_gid_by_os:
+  Darwin: staff
+  Linux: "{{ git_user_id }}"
+  Windows: Users

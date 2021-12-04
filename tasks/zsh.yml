@@ -1,6 +1,6 @@
 - name: Add Git completion for zsh
   ansible.builtin.lineinfile:
-    path: "{{ git_user_home_path | default(git_user_home_path_default, true) }}/.zshrc.local"
+    path: "~{{ git_user_id }}/.zshrc.local"
     line: 'autoload -Uz compinit && compinit # line added by diehlabs/ansible-role-git'
     create: true
     mode: u=rw,g=r,o=r

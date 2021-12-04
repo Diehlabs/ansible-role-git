@@ -1,14 +1,14 @@
 ---
 - name: Ensure .bash_profile exists
   ansible.builtin.file:
-    path: "{{ git_user_home_path | default(git_user_home_path_default, true) }}/.bash_profile"
+    path: "~{{ git_user_id }}/.bash_profile"
     state: touch
     mode: "u=rw,g=r,o=r"
     owner: "{{ git_user_id }}"
 
 - name: Add bash-completion to bash_profile
   ansible.builtin.lineinfile:
-    path: "{{ git_user_home_path | default(git_user_home_path_default, true) }}/.bash_profile"
+    path: "~{{ git_user_id }}/.bash_profile"
     line: 'source /usr/local/etc/profile.d/bash_completion.sh'
     # create: true
     # owner: "{{ git_user_id }}"
@@ -16,7 +16,7 @@
 
 - name: Add show dirty state to bash_profile
   ansible.builtin.lineinfile:
-    path: "{{ git_user_home_path | default(git_user_home_path_default, true) }}/.bash_profile"
+    path: "~{{ git_user_id }}/.bash_profile"
     line: 'GIT_PS1_SHOWDIRTYSTATE=true'
     # create: true
     # owner: "{{ git_user_id }}"
@@ -24,7 +24,7 @@
 
 - name: Configure .gitexcludes
   ansible.builtin.lineinfile:
-    path: "{{ git_user_home_path | default(git_user_home_path_default, true) }}/.gitexcludes"
+    path: "~{{ git_user_id }}/.gitexcludes"
     line: .DS_Store
     create: true
     owner: "{{ git_user_id }}"
