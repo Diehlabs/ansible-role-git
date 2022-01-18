@@ -34,6 +34,13 @@
     file: "~{{ git_user_id }}/.gitconfig"
     value: store
 
+- name: Git config - pull.rebase
+  community.general.git_config:
+    name: pull.rebase
+    scope: "{{ git_config_scope }}"
+    file: "~{{ git_user_id }}/.gitconfig"
+    value: false
+
 # Using lineinfile instead
 # - name: Git config (name)
 #   ansible.builtin.lineinfile:
