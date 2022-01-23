@@ -3,59 +3,14 @@
   ansible.builtin.file:
     path: "~{{ git_user_id }}/.gitconfig"
     state: touch
-    mode: "u=rw,g=r,o=r"
     owner: "{{ git_user_id }}"
+    group: "{{ git_user_group_id }}"
+    mode: "u=rw,g=r,o=r"
 
-- name: Do git config (http.sslVerify)
+- name: "Manage git config entries"
   community.general.git_config:
-    name: http.sslVerify
+    name: "{{ item.key }}"
     scope: "{{ git_config_scope }}"
-    file: "~{{ git_user_id }}/.gitconfig"
-    value: "{{ git_ssl_verify }}"
-
-- name: Do git config - email
-  community.general.git_config:
-    name: user.email
-    scope: "{{ git_config_scope }}"
-    file: "~{{ git_user_id }}/.gitconfig"
-    value: "{{ git_user_email }}"
-
-- name: Do git config - name
-  community.general.git_config:
-    name: user.name
-    scope: "{{ git_config_scope }}"
-    file: "~{{ git_user_id }}/.gitconfig"
-    value: "\"{{ git_user_full_name }}\""
-
-- name: Git config - git-credential-store
-  community.general.git_config:
-    name: credential.helper
-    scope: "{{ git_config_scope }}"
-    file: "~{{ git_user_id }}/.gitconfig"
-    value: store
-
-- name: Git config - pull.rebase
-  community.general.git_config:
-    name: pull.rebase
-    scope: "{{ git_config_scope }}"
-    file: "~{{ git_user_id }}/.gitconfig"
-    value: false
-
-# Using lineinfile instead
-# - name: Git config (name)
-#   ansible.builtin.lineinfile:
-#     path: "~{{ git_user_id }}/.gitconfig"
-#     regexp: '^name = .*$'
-#     line: "name = {{ git_user_full_name }}"
-
-# - name: Git config (email)
-#   ansible.builtin.lineinfile:
-#     path: "~{{ git_user_id }}/.gitconfig"
-#     regexp: '^email = .*$'
-#     line: "email = {{ git_user_email }}"
-
-# - name: Git config (sslVerify)
-#   ansible.builtin.lineinfile:
-#     path: "~{{ git_user_id }}/.gitconfig"
-#     regexp: '^sslVerify = .*$'
-#     line: "sslVerify = {{ git_ssl_verify }}"
+    file: "{{ git_config_path }}"
+    value: "{{ item.value }}"
+  with_dict: "{{ git_config_items }}"
