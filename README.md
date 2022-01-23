@@ -1,5 +1,5 @@
 ansible-role-git
-[![Ansible Lint](https://github.com/CultClassik/ansible-role-git/actions/workflows/Ansible%20Lint.yml/badge.svg)](https://github.com/CultClassik/ansible-role-git/actions/workflows/Ansible%20Lint.yml)
+[![Ansible Lint](https://github.com/Diehlabs/ansible-role-git/actions/workflows/test.yml/badge.svg)](https://github.com/Diehlabs/ansible-role-git/actions/workflows/test.yml)
 =========
 
 Installs and configures Git and related items. Windows, Linux, OSX supported.
@@ -15,7 +15,7 @@ Role Variables
 Defaults:
 | Variable Name       | Info     |
 | :------------- | :------------- |
-| git_user_email | cultclassik@gmail.com |
+| git_user_email | chris@gmail.com |
 | git_user_id | chris |
 | git_user_full_name | Chris Diehl |
 | git_user_home_path | # optional to specify explicit path, otherwise path is derived based on OS from var "git_user_home_path_by_os". |
