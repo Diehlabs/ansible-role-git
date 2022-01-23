@@ -35,5 +35,5 @@
     path: /bin/zsh
   register: zsh_is_installed
 
-- include: zsh.yml
+- include_tasks: zsh.yml
   when: zsh_is_installed.stat.exists

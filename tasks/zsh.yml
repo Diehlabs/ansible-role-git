@@ -1,7 +1,7 @@
 - name: Add Git completion for zsh
   ansible.builtin.lineinfile:
     path: "~{{ git_user_id }}/.zshrc.local"
-    line: 'autoload -Uz compinit && compinit'
+    line: 'autoload -Uz compinit && compinit # line added by diehlabs/ansible-role-git'
     create: true
     mode: u=rw,g=r,o=r
     owner: "{{ git_user_id }}"
