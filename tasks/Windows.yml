@@ -1,10 +1,7 @@
 ---
 - name: Install Chocolatey packages (Git)
   win_chocolatey:
-    name: "git"
-    state: present
-
-- name: Install Chocolatey packages (poshgit)
-  win_chocolatey:
-    name: "poshgit"
+    name:
+      - git
+      - poshgit
     state: present
