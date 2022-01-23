@@ -4,6 +4,6 @@
 git_config_scope: file
 
 git_user_gid_by_os:
-  Darwin: staff
+  Darwin: admin
   Linux: "{{ git_user_id }}"
   Windows: Users

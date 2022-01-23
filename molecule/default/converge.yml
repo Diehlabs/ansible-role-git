@@ -6,10 +6,10 @@
       ansible.builtin.user:
         name: chris
 
-    - name: "Include git"
+    - name: Include git
       include_role:
-        name: "git"
+        name: ansible-role-git
       vars:
         git_user_email: user@email.com
         git_user_id: chris
-        git_user_full_name: "Chris Diehl"
+        git_user_full_name: Chris Diehl

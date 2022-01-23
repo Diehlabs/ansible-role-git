@@ -1,39 +1,43 @@
 ---
+- name: "Configure .gitexcludes"
+  ansible.builtin.lineinfile:
+    path: "~{{ git_user_id }}/.gitexcludes"
+    line: "{{ item }}"
+    create: true
+    owner: "{{ git_user_id }}"
+    group: "{{ git_user_group_id }}"
+    mode: "u=rw,g=r,o=r"
+  loop: "{{ git_excludes_items }}"
+
 - name: Ensure .bash_profile exists
   ansible.builtin.file:
     path: "~{{ git_user_id }}/.bash_profile"
     state: touch
-    mode: "u=rw,g=r,o=r"
     owner: "{{ git_user_id }}"
+    group: "{{ git_user_group_id }}"
+    mode: "u=rw,g=r,o=r"
 
 - name: Add bash-completion to bash_profile
   ansible.builtin.lineinfile:
     path: "~{{ git_user_id }}/.bash_profile"
     line: 'source /usr/local/etc/profile.d/bash_completion.sh'
-    # create: true
-    # owner: "{{ git_user_id }}"
-    # mode: "u=rwx,g=r,o=r"
+    owner: "{{ git_user_id }}"
+    group: "{{ git_user_group_id }}"
+    mode: "u=rw,g=r,o=r"
 
 - name: Add show dirty state to bash_profile
   ansible.builtin.lineinfile:
     path: "~{{ git_user_id }}/.bash_profile"
     line: 'GIT_PS1_SHOWDIRTYSTATE=true'
-    # create: true
-    # owner: "{{ git_user_id }}"
-    # mode: "u=rwx,g=r,o=r"
-
-- name: Configure .gitexcludes
-  ansible.builtin.lineinfile:
-    path: "~{{ git_user_id }}/.gitexcludes"
-    line: .DS_Store
-    create: true
     owner: "{{ git_user_id }}"
+    group: "{{ git_user_group_id }}"
     mode: "u=rw,g=r,o=r"
 
-- name: Check if zsh is present
-  stat:
-    path: /bin/zsh
-  register: zsh_is_installed
-
-- include_tasks: zsh.yml
-  when: zsh_is_installed.stat.exists
+- name: Add Git completion for zsh
+  ansible.builtin.lineinfile:
+    path: "~{{ git_user_id }}/.zshrc.local"
+    line: 'autoload -Uz compinit && compinit # line added by diehlabs/ansible-role-git'
+    create: true
+    owner: "{{ git_user_id }}"
+    group: "{{ git_user_group_id }}"
+    mode: "u=rw,g=r,o=r"
