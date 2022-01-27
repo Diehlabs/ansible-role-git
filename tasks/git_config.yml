@@ -13,7 +13,7 @@
     scope: "{{ git_config_scope }}"
     file: "{{ git_config_path }}"
     value: "{{ item.value }}"
-  with_dict: "{{ git_config_items_default | union(git_config_items) }}"
+  with_dict: "{{ git_config_items_default | combine(git_config_items) }}"
 
 - name: Configure .gitexcludes
   ansible.builtin.blockinfile:
