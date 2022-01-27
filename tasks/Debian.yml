@@ -1,9 +1,0 @@
----
-- name: Installing apt Packages (Git)
-  ansible.builtin.apt:
-    pkg:
-      - git
-      - bash-completion
-      - coreutils
-    state: present
-    update_cache: yes
