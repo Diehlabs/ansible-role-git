@@ -7,15 +7,5 @@ git_user_full_name: "{{ user_name }}"
 # optional
 git_user_group_id: "{{ git_user_gid_by_os[ansible_system] }}"
 git_config_path: "~{{ git_user_id }}/.gitconfig"
-git_config_items:
-  'user.name': "{{ git_user_full_name }}"
-  'credential.helper': store
-  'pull.rebase': false
-  'http.sslVerify': true
-  'user.email': "{{ git_user_email }}"
-git_excludes_items:
-  - '.DS_Store'
-  - '*.tfvars'
-  - '**/.terraform/*'
-  - '*.tfstate'
-  - '*.tfstate.*'
+git_config_items: []
+git_excludes_items: []

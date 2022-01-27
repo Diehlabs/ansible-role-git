@@ -7,3 +7,17 @@ git_user_gid_by_os:
   Darwin: admin
   Linux: "{{ git_user_id }}"
   Windows: Users
+
+git_config_items_default:
+  'user.name': "{{ git_user_full_name }}"
+  'user.email': "{{ git_user_email }}"
+  'credential.helper': store
+  'pull.rebase': false
+  'http.sslVerify': true
+
+git_excludes_items_default:
+  - '.DS_Store'
+  - '*.tfvars'
+  - '**/.terraform/*'
+  - '*.tfstate'
+  - '*.tfstate.*'

@@ -7,10 +7,23 @@
     group: "{{ git_user_group_id }}"
     mode: "u=rw,g=r,o=r"
 
-- name: "Manage git config entries"
+- name: Manage git config entries
   community.general.git_config:
     name: "{{ item.key }}"
     scope: "{{ git_config_scope }}"
     file: "{{ git_config_path }}"
     value: "{{ item.value }}"
-  with_dict: "{{ git_config_items }}"
+  with_dict: "{{ git_config_items_default | union(git_config_items) }}"
+
+- name: Configure .gitexcludes
+  ansible.builtin.blockinfile:
+    path: "~{{ git_user_id }}/.gitexcludes"
+    create: yes
+    owner: "{{ git_user_id }}"
+    group: "{{ git_user_group_id }}"
+    mode: "u=rw,g=r,o=r"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK - gitexcludes file entries"
+    block: |
+      {% for line in {{ git_excludes_items_default | union(git_excludes_items) %}
+      {{ line }}
+      {% endfor %}

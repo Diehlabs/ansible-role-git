@@ -1,14 +1,4 @@
 ---
-- name: "Configure .gitexcludes"
-  ansible.builtin.lineinfile:
-    path: "~{{ git_user_id }}/.gitexcludes"
-    line: "{{ item }}"
-    create: true
-    owner: "{{ git_user_id }}"
-    group: "{{ git_user_group_id }}"
-    mode: "u=rw,g=r,o=r"
-  loop: "{{ git_excludes_items }}"
-
 - name: Ensure .bash_profile exists
   ansible.builtin.file:
     path: "~{{ git_user_id }}/.bash_profile"
