@@ -13,22 +13,15 @@ Role Variables
 --------------
 
 Defaults:
-| Variable Name       | Info     |
-| :------------- | :------------- |
-| git_user_email | chris@gmail.com |
-| git_user_id | chris |
-| git_user_full_name | Chris Diehl |
-| git_user_home_path | # optional to specify explicit path, otherwise path is derived based on OS from var "git_user_home_path_by_os". |
-| git_ssl_verify | "true" |
-| git_config_scope | system |
+| Variable name | Description | Example value | Default value | Required? |
+|---|---|---|---|---|
+| git_user_email | Your email address for gitconfig | me@spam.org | {{ user_email }} | YES |
+| git_user_id | Your user ID for file ownership | myusername | {{ user_id }} | YES | 
+| git_user_full_name | Your full name for gitconfig | Chris Diehl | {{ user_name }} | YES |
+| git_user_home_path | # optional to specify explicit path, otherwise path is derived based on OS from var "git_user_home_path_by_os". | /Users/myuserid |{{ git_user_gid_by_os[ansible_system] }} | NO |
+| git_config_items | Dict of items to add to gitconfig. | See git_config_items_default in vars/main.yml for formatting. | [] | NO |
+| git_excludes_items | List of items to add to gitexcludes file | ... | [] | NO |
 
-Vars:
-| Variable Name       | Info     |
-| :------------- | :------------- |
-| git_user_home_path_default: | "{{ git_user_home_path_by_os[ansible_system] }}"
-| git_user_home_path_by_os.Darwin: | /Users/{{ git_user_id }} |
-| git_user_home_path_by_os.Linux: | /home/{{ git_user_id }} |
-| git_user_home_path_by_os.Windows: | \Users\{{ git_user_id }} |
 
 Dependencies
 ------------
