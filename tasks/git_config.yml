@@ -24,6 +24,6 @@
     mode: "u=rw,g=r,o=r"
     marker: "# {mark} ANSIBLE MANAGED BLOCK - gitexcludes file entries"
     block: |
-      {% for line in {{ git_excludes_items_default | union(git_excludes_items) %}
+      {% for line in git_excludes_items_default | union(git_excludes_items) %}
       {{ line }}
       {% endfor %}
