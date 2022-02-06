@@ -14,11 +14,9 @@ jobs:
           override-deps: ansible-lint==5.3.2
 
   molecule:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
-      - name: checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
         with:
           path: "${{ github.repository }}"
-      - name: molecule
-        uses: robertdebock/molecule-action@4.0.5
+      - uses: gofrolist/molecule-action@v2
