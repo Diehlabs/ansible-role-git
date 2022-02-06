@@ -5,17 +5,17 @@ on:
   push:
 
 jobs:
-  lint:
-    name: Lint
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+  # lint:
+  #   name: Lint
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v2
 
-      - name: Lint Ansible Role
-        uses: ansible/ansible-lint-action@master
-        with:
-          override-deps: ansible-lint==5.3.2
+  #     - name: Lint Ansible Role
+  #       uses: ansible/ansible-lint-action@master
+  #       with:
+  #         override-deps: ansible-lint==5.3.2
 
   molecule:
     name: Molecule
@@ -30,7 +30,7 @@ jobs:
           python-version: '3.x'
 
       - name: Install test dependencies.
-        run: pip3 install ansible molecule[docker] docker
+        run: pip3 install ansible ansible-lint molecule[docker] docker
 
       - name: Run Molecule tests.
         run: molecule test
