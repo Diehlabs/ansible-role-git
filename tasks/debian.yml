@@ -7,5 +7,6 @@
       - bash-completion
       - coreutils
       - python-pkg-resources
+      - python3-setuptools
 
     update_cache: yes
