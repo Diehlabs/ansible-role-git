@@ -1,6 +1,6 @@
 ansible-role-git
-[![Ansible Lint](https://github.com/Diehlabs/ansible-role-git/actions/workflows/lint.yml/badge.svg)](https://github.com/Diehlabs/ansible-role-git/actions/workflows/lint.yml)
-[![Molecule](https://github.com/Diehlabs/ansible-role-git/actions/workflows/molecule.yml/badge.svg)](https://github.com/Diehlabs/ansible-role-git/actions/workflows/molecule.yml)
+[![Ansible CI](https://github.com/Diehlabs/ansible-role-git/actions/workflows/ci.yml/badge.svg)](https://github.com/Diehlabs/ansible-role-git/actions/workflows/ci.yml)
+
 =========
 
 Installs and configures Git and related items. Windows, Linux, OSX supported.

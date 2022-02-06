@@ -6,31 +6,8 @@ driver:
   name: docker
 
 platforms:
-  # - name: ubuntu
-  #   image: ubuntu:focal
-  #   tmpfs:
-  #     - /run
-  #     - /tmp
-  #   volumes:
-  #     - /sys/fs/cgroup:/sys/fs/cgroup:ro
-  #   capabilities:
-  #     - SYS_ADMIN
-  #   command: |
-  #     apt-get update &&\
-  #     apt-get -i install python3
-  #   pre_build_image: true
-
   - name: ubuntu
-    image: geerlingguy/docker-ubuntu2004-ansible
-    tmpfs:
-      - /run
-      - /tmp
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    capabilities:
-      - SYS_ADMIN
-    command: "/lib/systemd/systemd"
-    pre_build_image: true
+    image: ubuntu:20.04
 
 provisioner:
   name: ansible
@@ -48,3 +25,18 @@ lint: |
   set -e
   yamllint .
   ansible-lint .
+
+scenario:
+  name: default
+  test_sequence:
+    - lint
+    - destroy
+    - dependency
+    - syntax
+    - create
+    - prepare
+    - converge
+    - idempotence
+    - side_effect
+    - verify
+    - destroy

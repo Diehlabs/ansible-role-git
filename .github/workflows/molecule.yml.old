@@ -1,0 +1,24 @@
+name: Ansible Test
+
+on: [push, pull_request]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Lint Ansible Role
+        uses: ansible/ansible-lint-action@master
+        with:
+          override-deps: ansible-lint==5.3.2
+
+  molecule:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          path: "${{ github.repository }}"
+      - name: molecule
+        uses: robertdebock/molecule-action@4.0.5
