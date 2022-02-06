@@ -6,6 +6,7 @@
     owner: "{{ git_user_id }}"
     group: "{{ git_user_group_id }}"
     mode: "u=rw,g=r,o=r"
+    modification_time: preserve
 
 - name: Manage git config entries
   community.general.git_config:
