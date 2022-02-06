@@ -1,4 +1,4 @@
-name: Ansible Test
+name: Ansible CI
 
 on: [push, pull_request]
 
@@ -10,8 +10,17 @@ jobs:
         uses: actions/checkout@v2
         with:
           path: "${{ github.repository }}"
-      - name: Molecule
-        uses: gofrolist/molecule-action@v2
+
+      - name: Set up Python 3.
+        uses: actions/setup-python@v2
         with:
-          molecule_args: -d docker
-          molecule_command: test
+          python-version: '3.x'
+
+      - name: Install test dependencies.
+        run: pip3 install ansible molecule[docker] docker
+
+      - name: Run Molecule tests.
+        run: molecule test
+        env:
+          PY_COLORS: '1'
+          ANSIBLE_FORCE_COLOR: '1'
