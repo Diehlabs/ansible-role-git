@@ -24,21 +24,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Python 3.
+      - name: Setup Python 3
         uses: actions/setup-python@v2
         with:
           python-version: '3.x'
 
-      - name: Install test dependencies.
+      - name: Install CI deps
         run: |
           pip3 install \
             ansible \
             ansible-lint \
-            molecule[docker] \
             docker \
-            setuptools
+            molecule[docker]
+          pip3 install --upgrade setuptools
 
-      - name: Run Molecule tests.
+      - name: Run tests
         run: molecule test
         env:
           PY_COLORS: '1'
