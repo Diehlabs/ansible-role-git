@@ -6,5 +6,6 @@
       - git
       - bash-completion
       - coreutils
+      - python-pkg-resources
 
     update_cache: yes
