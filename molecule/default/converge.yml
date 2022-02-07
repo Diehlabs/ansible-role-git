@@ -2,10 +2,6 @@
 - name: Converge
   hosts: all
   tasks:
-    - name: Add the user needed to test role with defaults
-      ansible.builtin.user:
-        name: chris
-
     - name: Include git
       include_role:
         name: ansible-role-git

@@ -1,11 +1,14 @@
 ansible-role-git
-[![Ansible Lint](https://github.com/Diehlabs/ansible-role-git/actions/workflows/test.yml/badge.svg)](https://github.com/Diehlabs/ansible-role-git/actions/workflows/test.yml)
+[![Ansible CI](https://github.com/Diehlabs/ansible-role-git/actions/workflows/ci.yml/badge.svg)](https://github.com/Diehlabs/ansible-role-git/actions/workflows/ci.yml)
+
 =========
 
 Installs and configures Git and related items. Windows, Linux, OSX supported.
 
 Requirements
 ------------
+
+setuptools
 
 Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
 
