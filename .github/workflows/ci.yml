@@ -6,42 +6,28 @@ on:
 
 jobs:
   molecule:
-    uses: Diehlabs/.github/.github/workflows/ansible-ci.yml@v0.0.8
-  # lint:
-  #   name: Lint
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v2
+    name: Molecule
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-  #     - name: Lint Ansible Role
-  #       uses: ansible/ansible-lint-action@master
-  #       with:
-  #         override-deps: ansible-lint==5.3.2
+      - name: Setup Python 3
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
 
-  # molecule:
-  #   name: Molecule
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v2
+      - name: Install CI deps
+        run: |
+          pip3 install \
+            ansible \
+            ansible-lint \
+            docker \
+            molecule[docker]
+          pip3 install --upgrade setuptools
 
-  #     - name: Setup Python 3
-  #       uses: actions/setup-python@v2
-  #       with:
-  #         python-version: '3.x'
-
-  #     - name: Install CI deps
-  #       run: |
-  #         pip3 install \
-  #           ansible \
-  #           ansible-lint \
-  #           docker \
-  #           molecule[docker]
-  #         pip3 install --upgrade setuptools
-
-  #     - name: Run tests
-  #       run: molecule test
-  #       env:
-  #         PY_COLORS: '1'
-  #         ANSIBLE_FORCE_COLOR: '1'
+      - name: Run tests
+        run: molecule test
+        env:
+          PY_COLORS: '1'
+          ANSIBLE_FORCE_COLOR: '1'
