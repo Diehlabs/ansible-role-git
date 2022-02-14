@@ -6,5 +6,6 @@
       - git
       - bash-completion
       - coreutils
+      - shellcheck
 
     update_cache: yes
