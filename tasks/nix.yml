@@ -24,12 +24,3 @@
     owner: "{{ git_user_id }}"
     group: "{{ git_user_group_id }}"
     mode: "u=rw,g=r,o=r"
-
-- name: Add Git completion for zsh
-  ansible.builtin.lineinfile:
-    path: "~{{ git_user_id }}/.zshrc.local"
-    line: 'autoload -Uz compinit && compinit # line added by diehlabs/ansible-role-git'
-    create: true
-    owner: "{{ git_user_id }}"
-    group: "{{ git_user_group_id }}"
-    mode: "u=rw,g=r,o=r"
