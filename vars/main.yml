@@ -14,6 +14,7 @@ git_config_items_default:
   'credential.helper': store
   'pull.rebase': false
   'http.sslVerify': true
+  'init.defaultBranch': main
 
 git_excludes_items_default:
   - '.DS_Store'
