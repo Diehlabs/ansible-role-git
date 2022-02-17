@@ -1,19 +1,17 @@
 ---
-- name: Ensure .gitconfig exists
-  ansible.builtin.file:
-    path: "~{{ git_user_id }}/.gitconfig"
-    state: touch
+# using init_file instead of git_config because
+# git_config sets root:root on the file on linux systems
+- name: Manage git config entries
+  community.general.ini_file:
+    path: "{{ git_config_path }}"
+    section: "{{ item.key | split('.') | first }}"
+    option: "{{ item.key | split('.') | last }}"
+    value: "{{ item.value }}"
+    create: yes
     owner: "{{ git_user_id }}"
     group: "{{ git_user_group_id }}"
-    mode: "u=rw,g=r,o=r"
-
-- name: Manage git config entries
-  community.general.git_config:
-    name: "{{ item.key }}"
-    scope: "{{ git_config_scope }}"
-    file: "{{ git_config_path }}"
-    value: "{{ item.value }}"
-  with_dict: "{{ git_config_items_default | union(git_config_items) }}"
+    mode: u=rw,g=r,o=r
+  with_dict: "{{ git_config_items_default | combine(git_config_items) }}"
 
 - name: Configure .gitexcludes
   ansible.builtin.blockinfile:
@@ -21,9 +19,9 @@
     create: yes
     owner: "{{ git_user_id }}"
     group: "{{ git_user_group_id }}"
-    mode: "u=rw,g=r,o=r"
+    mode: u=rw,g=r,o=r
     marker: "# {mark} ANSIBLE MANAGED BLOCK - gitexcludes file entries"
     block: |
-      {% for line in {{ git_excludes_items_default | union(git_excludes_items) %}
+      {% for line in git_excludes_items_default | union(git_excludes_items) %}
       {{ line }}
       {% endfor %}

@@ -1,8 +1,5 @@
 ---
 # vars file for git
-
-git_config_scope: file
-
 git_user_gid_by_os:
   Darwin: admin
   Linux: "{{ git_user_id }}"
