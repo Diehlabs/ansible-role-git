@@ -1,20 +1,20 @@
 ---
-- include_tasks: debian.yml
+- ansible.builtin.include_tasks: debian.yml
   when: ansible_os_family == 'Debian'
 
-- include_tasks: osx.yml
+- ansible.builtin.include_tasks: osx.yml
   when: ansible_os_family == 'Darwin'
 
-- include_tasks: nix.yml
+- ansible.builtin.include_tasks: nix.yml
   when: ansible_os_family != 'Windows'
 
-- include_tasks: Windows.yml
+- ansible.builtin.include_tasks: Windows.yml
   when: ansible_os_family == 'Windows'
 
-- include_tasks: git_config.yml
+- ansible.builtin.include_tasks: git_config.yml
 
 - name: Install pip packages
-  pip:
+  ansible.builtin.pip:
     name:
       - pre-commit
       - lastversion

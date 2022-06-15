@@ -1,5 +1,6 @@
 ---
 - name: Installing apt Packages (Git)
+  become: True
   ansible.builtin.apt:
     state: present
     name:
