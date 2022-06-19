@@ -1,16 +1,9 @@
 ---
-# using init_file instead of git_config because
-# git_config sets root:root on the file on linux systems
 - name: Manage git config entries
-  community.general.ini_file:
-    path: "{{ git_config_path }}"
-    section: "{{ item.key | split('.') | first }}"
-    option: "{{ item.key | split('.') | last }}"
+  community.general.git_config:
+    name: "{{ item.key }}"
+    scope: global
     value: "{{ item.value }}"
-    create: yes
-    owner: "{{ git_user_id }}"
-    group: "{{ git_user_group_id }}"
-    mode: u=rw,g=r,o=r
   with_dict: "{{ git_config_items_default | combine(git_config_items) }}"
 
 - name: Configure .gitexcludes
