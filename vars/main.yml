@@ -10,8 +10,7 @@ git_config_items_default:
   'user.email': "{{ git_user_email }}"
 
 git_excludes_items_default:
-  - '.DS_Store'
-  - '*.tfvars'
+  - '**/.DS_Store'
   - '**/.terraform/*'
-  - '*.tfstate'
-  - '*.tfstate.*'
+  - '**/*.tfstate'
+  - '**/*.tfstate.*'
