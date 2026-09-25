@@ -11,6 +11,13 @@ platforms:
 
 provisioner:
   name: ansible
+  env:
+    # Molecule stopped symlinking this checkout under its own directory
+    # name, which is what let converge.yml resolve
+    # `include_role: name: ansible-role-git` implicitly. ../../.. from
+    # here (molecule/default/) is this repo's parent directory, so
+    # Ansible can resolve the checkout itself as a role again.
+    ANSIBLE_ROLES_PATH: ../../..
   config_options:
     defaults:
       interpreter_python: auto_silent
